@@ -13,9 +13,6 @@ export class HomePagePage implements OnInit {
   filteredArticles: any[] = [];
   searchText = "";
 
-  // men: any[] = [];
-  // women: any[] = [];
-
   men_clicked = false;
   women_clicked = false;
 

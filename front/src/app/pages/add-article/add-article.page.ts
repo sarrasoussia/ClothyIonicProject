@@ -13,6 +13,9 @@ import { ToastController } from '@ionic/angular';
 })
 export class AddArticlePage {
   name: string = '';
+  desc: string = '';
+  expiration!: Date;
+  localisation: string = '';
   price: string = '';
   image: string = '';
   category: string = '';

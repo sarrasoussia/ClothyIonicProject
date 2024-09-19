@@ -1,3 +1,5 @@
+import random
+import string
 from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS, cross_origin
 import base64
@@ -16,24 +18,13 @@ from bson import ObjectId
 
 app = Flask(__name__)
 CORS(app)
-client = MongoClient("mongodb", 27017)
+client = MongoClient("localhost", 27017)
 db = client.reclothy
 admins = db.admin
 users = db.users
 articles = db.articles
 app.config["JWT_SECRET_KEY"] = "skjdfbnbsrkjgb14541616"
 jwt = JWTManager(app)
-
-
-def add_default_admin():
-    admin_email = "admin@gmail.com"
-    admin_password = "admin"
-    admin = admins.find_one({"email": admin_email})
-    if not admin:
-        admins.insert_one({"email": admin_email, "password": admin_password})
-
-
-add_default_admin()
 
 
 @app.route("/login", methods=["POST"])
@@ -616,4 +607,5 @@ def removeFromCart():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True)
+    # app.run(host="localhost")
